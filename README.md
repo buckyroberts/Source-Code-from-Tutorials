@@ -1,4 +1,4 @@
-#####Source Code from thenewboston Tutorials
+####Source Code from thenewboston Tutorials
 
 We are in the process of adding the source code from all of the tutorials to a public GitHub repository. If anyone would like to contribute, please feel free!
 
@@ -6,7 +6,7 @@ We are in the process of adding the source code from all of the tutorials to a p
 
 ***
 
-#####To Submit Source Code
+#####How to Submit Source Code
 
 1 - Download [GitHub for Windows](https://windows.github.com/) or [GitHub for Mac](https://mac.github.com/)
 
@@ -34,3 +34,6 @@ We are in the process of adding the source code from all of the tutorials to a p
 
 ![](http://i.imgur.com/pogptvB.png)
 
+9 - On this page, click the “Create pull request” button.
+
+10 - Add a comment and click “create pull request” again button to submit.
