@@ -12,5 +12,9 @@ We are in the process of adding the source code from all of the tutorials to a p
 
 2. On the top right of this page, click "Fork" (this creates a copy for you)
  
-
 ![](http://i.imgur.com/UTwzOgC.png)
+
+3. Once your copy has been created, click “Clone in Desktop” (download and save it on your computer)
+
+![](http://i.imgur.com/uNy5iHg.png)
+
