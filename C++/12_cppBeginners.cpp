@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// Declare a class and define fuction inside the class
+// Declare a class and define function inside the class
 class BuckysClass{
     public: // You can use the function outside of the class.
         void coolSaying(){
