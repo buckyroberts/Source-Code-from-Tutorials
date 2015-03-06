@@ -4,6 +4,6 @@ using namespace std;
 
 int main()
 {
-	Burrito bo; // create an object
-	return 0;
+    Burrito bo; // create an object
+    return 0;
 }
