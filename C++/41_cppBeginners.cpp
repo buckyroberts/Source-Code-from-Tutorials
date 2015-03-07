@@ -12,6 +12,6 @@ int main(){
     cout << "bp1 is at " << bp1 << endl;
     cout << "bp2 is at " << bp2 << endl;
 
-    bp0 ++; // int is 4 bytes * 1 = 8
+    bp0 ++;
     cout << "bp0 is now at " << bp0 << endl;
 }
