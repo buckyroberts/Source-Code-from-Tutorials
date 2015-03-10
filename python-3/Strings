@@ -1,0 +1,28 @@
+>>>> bucky roberts
+SyntaxError: invalid syntax
+>>>> "bucky roberts
+'bucky roberts'
+>>>> 'Bucky roberts is awesome'
+'Bucky roberts is awesome'
+>>>> 'I don't think shes 18'
+SyntaxError" invalid syntax
+>>>> "I dont't think shes 18"
+"I don't think shes 18"
+>>>> 'she said ,"what part of the cow is the meatloaf from?" '
+'she said ,"what part of the cow is the meatloaf from?" '
+>>>> 'I don\'t think shes18'
+"I don't think shes 18"
+>>>>print("hey now brown cow")
+hey now brown cow
+>>>>print('C:\Bucky\Desktop\nudePics')
+C:\Bucky\Desktop
+udePics
+>>>>print(r'C:\Bucky\Desktop\nudePics')
+C:\Bucky\Desktop\nudePics
+>>>>firstname = " bucky"
+>>>>firstname += " Roberts"
+'Bucky Roberts'
+>>>>firstname + "Mclovin"
+'Bucky Mclovin'
+>>>> firstname * 5
+'Bucky Bucky Bucky Bucky Bucky'
