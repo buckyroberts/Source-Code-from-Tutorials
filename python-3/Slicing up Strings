@@ -1,0 +1,26 @@
+>>>>user ="Tuna McFish"
+>>>>user[0]
+'T'
+>>>>user[5]
+'M'
+>>>>user[-1]
+'h'
+>>>>user[-5]
+'l'
+>>>>user[2:7]
+'na Mc'
+>>>>user[:7]
+'Tuna Mc'
+>>>>user[2:]
+'Tuna McFish'
+>>>>user[:]
+'Tuna McFish'
+>>>>print("dsdasd")
+dsadasd
+>>>>len('dfjh2289hfsdfjkasdf')
+21
+>>>>len(user)
+11
+
+
+
