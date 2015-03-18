@@ -33,7 +33,7 @@ public class Server extends JFrame {
 		setVisible(true);
 	}
 	
-	public void startRinning(){
+	public void startRunning(){
 		try{
 			server = new ServerSocket(6789, 100); //6789 is a dummy port for testing, this can be changed. The 100 is the maximum people waiting to connect.
 			while(true){
