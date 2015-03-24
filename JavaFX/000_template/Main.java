@@ -16,10 +16,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        window.setTitle("Title of the Window");
-
-        button = new Button();
-        button.setText("Click me");
+        window.setTitle("thenewboston - JavaFX");
+        button = new Button("Click me");
 
         StackPane layout = new StackPane();
         layout.getChildren().add(button);
