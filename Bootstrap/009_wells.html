@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>thenewboston</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>Wells are sections with border and grey background</h2>
+
+        <div class="well">Basic Well</div>
+        <div class="well well-sm">Small Well</div>
+
+        <div class="alert alert-success">
+            Congratulations, you just won the game!
+        </div>
+
+        <!-- to make the alert closable -->
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            Don't forget Kelly's birthday is today!
+        </div>
+
+        <!-- add the fade and in class to animate when closing -->
+        <div class="alert alert-danger fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            Are you sure you want to delete your account?
+        </div>
+
+    </div>
+
+</body>
+</html>
