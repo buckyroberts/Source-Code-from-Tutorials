@@ -22,18 +22,18 @@
     padding: 15px;
 }
 
-/* Start toggled classes - make space for menu on left when button clicked */
-#wrapper.toggled {
+/* Start menuHidden classes - make space for menu on left when button clicked */
+#wrapper.menuHidden {
     padding-left: 250px;
 }
 
 /* Change with of sidebar from 0 to 250px */
-#wrapper.toggled #sidebar-wrapper {
+#wrapper.menuHidden #sidebar-wrapper {
     width: 250px;
 }
 
 /* Since we added left padding, we need to shrink the width by 250px */
-#wrapper.toggled #page-content-wrapper {
+#wrapper.menuHidden #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
 }
@@ -75,7 +75,7 @@
         padding-left: 250px;
     }
 
-    #wrapper.toggled {
+    #wrapper.menuHidden {
         padding-left: 0;
     }
 
@@ -83,7 +83,7 @@
         width: 250px;
     }
 
-    #wrapper.toggled #sidebar-wrapper {
+    #wrapper.menuHidden #sidebar-wrapper {
         width: 0;
     }
 
@@ -92,7 +92,7 @@
         position: relative;
     }
 
-    #wrapper.toggled #page-content-wrapper {
+    #wrapper.menuHidden #page-content-wrapper {
         position: relative;
         margin-right: 0;
     }
