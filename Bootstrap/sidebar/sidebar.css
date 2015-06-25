@@ -1,49 +1,37 @@
-/* Everything */
-#wrapper {
-    padding-left: 0;
-}
-
 /* Sidebar */
 #sidebar-wrapper {
-    z-index: 10;
-    position: fixed;
-    left: 250px;
+    z-index: 1;
+    position: absolute;
     width: 0;
     height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
+    overflow-y: hidden;
     background: #2C3E50;
+    border: 2px solid red;
+    opacity: 0.9;
 }
 
-/* Main white area */
+/* Always take up entire screen */
 #page-content-wrapper {
     width: 100%;
     position: absolute;
     padding: 15px;
+    border: 5px solid blue;
 }
 
-/* Start menuHidden classes - make space for menu on left when button clicked */
-#wrapper.menuHidden {
-    padding-left: 250px;
-}
 
 /* Change with of sidebar from 0 to 250px */
-#wrapper.menuHidden #sidebar-wrapper {
+#wrapper.menuDisplayed #sidebar-wrapper {
     width: 250px;
 }
 
 /* Since we added left padding, we need to shrink the width by 250px */
-#wrapper.menuHidden #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
+#wrapper.menuDisplayed #page-content-wrapper {
+    padding-left: 250px;
 }
+
 
 /* Sidebar styling - the entire ul list */
 .sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -60,40 +48,5 @@
 }
 
 .sidebar-nav li a:hover {
-    text-decoration: none;
     background: #16A085;
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-/* When the screen is less than 768px, hide the sidebar */
-@media (min-width: 768px) {
-    #wrapper {
-        padding-left: 250px;
-    }
-
-    #wrapper.menuHidden {
-        padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #wrapper.menuHidden #sidebar-wrapper {
-        width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.menuHidden #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
 }
