@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>thenewboston</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+
+
+    <h3>Entire with on larger devices, 1/2 on small ones</h3>
+    <div class="row">
+        <div class="col-md-12 col-xs-6">
+            <p>Curabitur tellus diam, pharetra quis libero sit amet, finibus suscipit diam. Etiam felis dui, fermentum in est congue, tempus efficitur enim. Donec vitae venenatis neque, vel commodo ipsum. Etiam quis tellus tortor. Morbi porttitor tempor mauris in facilisis. Aliquam eget sapien consequat, finibus lectus nec, pulvinar justo. Mauris in consectetur lacus, in luctus turpis. Aenean eget velit ipsum. Sed elit enim, ullamcorper ac orci ac, fringilla interdum est. Praesent nec nisi ultrices lorem ullamcorper congue. Vivamus sed gravida metus, ut auctor nisl. Aliquam sollicitudin fringilla justo id facilisis.</p>
+        </div>
+    </div>
+
+
+    <h3>Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop</h3>
+    <div class="row">
+        <div class="row">
+            <div class="col-xs-6 col-md-4" style="background-color: lightblue">1/3 desktop, 1/2 mobile</div>
+            <div class="col-xs-6 col-md-4" style="background-color: lightgreen">1/3 desktop, 1/2 mobile</div>
+            <div class="col-xs-6 col-md-4" style="background-color: lightcoral">1/3 desktop, 1/2 mobile</div>
+        </div>
+    </div>
+
+
+    <h3>Offsetting Columns</h3>
+    <div class="row">
+        <div class="col-md-4" style="background-color: lightblue">4 wide</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-2" style="background-color: lightcoral">4 wide offset 2</div>
+    </div>
+
+
+    <h3>Nested Rows</h3>
+    <div class="row">
+        <div class="col-md-9" style="background-color: lightseagreen; padding: 30px;">
+
+            I am the main parent
+
+            <!-- to nest, add a new row (don't exceed 12 columns) -->
+            <div class="row">
+                <div class="col-md-8" style="background-color: lightblue">
+                    child 1
+                </div>
+                <div class="col-md-4" style="background-color: lightsalmon">
+                    child 2
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
