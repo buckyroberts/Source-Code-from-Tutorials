@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>thenewboston</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        <h3>Push and pull</h3>
+
+        <div class="row">
+
+            <!--
+                col-md-push-5 = move right 5 columns on md or greater (stay same for sm)
+                else just show as normal
+            -->
+            <div class="col-md-5 col-md-push-5" style="background: lightgreen">
+                Content A - MAIN BANNER
+            </div>
+
+            <!-- col-sm-pull-5 = move left 5 columns -->
+            <div class="col-md-5 col-md-pull-5" style="background: lightcoral">
+                Content B
+            </div>
+
+            <div class="col-md-2" style="background: lightblue">
+                Content C
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
