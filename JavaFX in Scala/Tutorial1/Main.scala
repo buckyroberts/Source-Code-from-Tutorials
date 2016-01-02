@@ -1,7 +1,7 @@
 package Tutorial1
 
 /**
- * Created by Echidna on 1/1/2016.
+ * Created by xxc3nsoredxx on 1/1/2016.
  */
 
 import javafx.application.Application
