@@ -8,7 +8,9 @@
 #This file is alternative solution for web crowler. 
 # Mayor reason for this is that website BuckysRoom.com is down, so original code doesnot work anymore. 
 # Solution description (what this program does):
-#this program goes on website https://www.thenewboston.com/search.php?type=0&sort=reputation ,and goes on every user's profile, and on that profile, it prints the first few (approx. 20) links of latest photos. To view photos, click on url or copy in web broser.
+#This program goes on website https://www.thenewboston.com/search.php?type=0&sort=reputation ,
+#and goes on every user's profile, and on that profile, 
+#it prints the first few (approx. 20) links of latest photos. To view photos, click on url or copy in web broser.
 
 
 # But history is changing and sooner or later this file or program will not work!. 
