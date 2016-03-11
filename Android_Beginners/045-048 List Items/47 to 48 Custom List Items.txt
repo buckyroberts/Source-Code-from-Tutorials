@@ -1,0 +1,120 @@
+[source code] Android Development Tutorial - 47 & 48 Custom List Items
+
+**** MainActivity.java
+
+package your.package.nbv47customlistitem;
+/*
+The only difference here is we are going to use a our Custom adapter instead of an Array Adapter.
+We pass the foods array as part of the constructor.
+Note: we don't have an array of images so we use the same one every time,
+else we would modify CustomAdapter to accept that array too.
+ */
+        
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        String[] foods = {"Bacon", "Ham", "Tuna", "Candy", "Meatball", "Potato"};
+        // Replace the Array adapter with your custom adapter.
+       // ListAdapter theListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
+        ListAdapter customListAdapter = new CustomAdapter(this,foods);// Pass the food arrary to the constructor.
+        ListView customListView = (ListView) findViewById(R.id.custom_ListView);
+        customListView.setAdapter(customListAdapter);
+
+        customListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String food = String.valueOf(parent.getItemAtPosition(position));
+                        Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+    }
+}
+
+***** CustomAdapter.java
+
+package your.package.nbv47customlistitem;
+// Lesson 48
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class CustomAdapter extends ArrayAdapter<String>{
+    public CustomAdapter(Context context, String[] foods) {
+        super(context, R.layout.custom_row ,foods);
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+       // default -  return super.getView(position, convertView, parent);
+        // add the layout
+        LayoutInflater myCustomInflater = LayoutInflater.from(getContext());
+        View customView = myCustomInflater.inflate(R.layout.custom_row, parent, false);
+        // get references.
+        String singleFoodItem = getItem(position);
+        TextView itemText = (TextView) customView.findViewById(R.id.item_text);
+        ImageView buckysImage = (ImageView) customView.findViewById(R.id.my_profile_image);
+
+        // dynamically update the text from the array
+        itemText.setText(singleFoodItem);
+        // using the same image every time
+        buckysImage.setImageResource(R.drawable.myprofile);
+        // Now we can finally return our custom View or custom item
+        return customView;
+    }
+}
+
+***** activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/custom_ListView"></ListView>
+</RelativeLayout>
+
+***** custom_row.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/my_profile_image"
+        android:src="@drawable/myprofile"
+        android:layout_margin="5dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/item_text"
+        android:layout_margin="5dp" />
+
+</LinearLayout>

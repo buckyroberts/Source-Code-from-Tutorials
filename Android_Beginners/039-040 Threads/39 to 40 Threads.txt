@@ -1,0 +1,127 @@
+[source code] Android Development Tutorial - 39 & 40 Threads
+
+***** MainActivity.java
+package your.package.nbv39threads;
+
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+
+public class MainActivity extends AppCompatActivity {
+    Handler waitMsgHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            TextView tv1 = (TextView) findViewById(R.id.tv1);
+            tv1.setText("Nice Job hoss!");
+        }
+    };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void btn1Clicked(View view){
+// Lesson 40
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                // What do you want the thread to do
+                long futureTime = (System.currentTimeMillis()+ 10000);//10 sec
+
+                while (System.currentTimeMillis()< futureTime){
+                    // Don't need to sync when you are not using a thread e,g, Tutorial 39
+                    synchronized(this){
+                        try {
+                            wait(futureTime - System.currentTimeMillis());
+                        }catch(Exception e){}
+                    }
+                }
+                waitMsgHandler.sendEmptyMessage(0);
+
+            }
+        };
+
+        Thread waitThread = new Thread(r);
+        waitThread.start();
+        //This toast will execute immediately
+        Toast.makeText(MainActivity.this,"Running thread fo 10 seconds",Toast.LENGTH_LONG).show();
+
+/*
+        long futureTime = (System.currentTimeMillis()+ 10000);//10 sec
+        // The Toast may not show if the futureTime is more than 3 seconds.
+        // Even though it is programed first.
+        Toast.makeText(MainActivity.this,"Waiting 2 seconds",Toast.LENGTH_LONG).show();
+
+        while (System.currentTimeMillis()< futureTime){
+            // Don't need to sync when you are not using a thread e,g, Tutorial 39
+            synchronized(this){
+                try {
+                    wait(futureTime - System.currentTimeMillis());
+                }catch(Exception e){}
+            }
+        }
+
+    // If you leave this here it will update as soon as the button is clicked. Move it to a handler.
+        TextView tv1 = (TextView) findViewById(R.id.tv1);
+        tv1.setText("Nice Job hoss!");
+*/    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+***** activity_main.xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/tv1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Me"
+        android:id="@+id/btn1"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="btn1Clicked" />
+</RelativeLayout>
+

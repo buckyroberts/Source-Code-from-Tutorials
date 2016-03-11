@@ -1,0 +1,130 @@
+[source code] Android Development Tutorial - 33 - Overflow Menu
+
+***** MainActivity
+package your.package.name.nbv33overflowmenu;
+
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.RelativeLayout;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        RelativeLayout main_view = (RelativeLayout)findViewById(R.id.main_view);
+        switch (item.getItemId()){
+            case R.id.menu_red:{
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+                main_view.setBackgroundColor(Color.RED);
+                return true;
+            }
+
+            case R.id.menu_green:{
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+                main_view.setBackgroundColor(Color.GREEN);
+                return true;
+            }
+
+            case R.id.menu_yellow:{
+                if (item.isChecked())
+                    item.setChecked(false);
+                else
+                    item.setChecked(true);
+                main_view.setBackgroundColor(Color.YELLOW);
+                return true;
+            }
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+}
+
+
+***** activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:id="@+id/main_view">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tvInstructions"
+        android:id="@+id/tvInstructions"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
+
+***** menu_main.xml
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+<!--
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_red"
+            android:orderInCategory="1"
+            app:showAsAction="never"
+            android:title="@string/strRed"/>
+
+        <item
+            android:id="@+id/menu_green"
+            android:orderInCategory="2"
+            app:showAsAction="never"
+            android:title="@string/strGreen"/>
+
+        <item
+            android:id="@+id/menu_yellow"
+            android:orderInCategory="3"
+            app:showAsAction="never"
+            android:title="@string/strYellow"/>
+    </group>
+</menu>
+
+***** strings.xml
+
+<resources>
+    <string name="app_name">NBV33OverFlowMenu</string>
+
+    <string name="strRed">Red</string>
+    <string name="strGreen">Green</string>
+    <string name="strYellow">Yellow</string>
+    <string name="tvInstructions">Select a color from the overflow menu, to change the screen background color.</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>
