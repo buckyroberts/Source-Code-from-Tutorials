@@ -1,0 +1,134 @@
+[source code] Android Development Tutorial - 65 & 66 Shared Preferences
+
+***** MainActivity.java
+
+package your.package.nbv63preferences;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity {
+    EditText userName;
+    EditText password;
+    TextView dataView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        userName = (EditText) findViewById(R.id.userNameInput);
+        password = (EditText) findViewById(R.id.passwordInput);
+        dataView = (TextView) findViewById(R.id.dataTextView);
+
+    }
+    // Lesson 64
+    //Save login info
+    public void saveData(View view){
+        SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = loginData.edit();
+        editor.putString("userName", userName.getText().toString());
+        editor.putString("password", password.getText().toString());
+        editor.apply();
+
+        Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show();
+    }
+
+    public void getData(View view){
+        SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String name = loginData.getString("userName", "");
+        String pw = loginData.getString("password","");
+        String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
+        dataView.setText(msg);
+    }
+}
+
+***** activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="User Name"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Password"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="69dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordInput"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:width="200dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userNameInput"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:width="200dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Info"
+        android:id="@+id/saveButton"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="saveData" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display Info"
+        android:id="@+id/displayButton"
+        android:layout_alignBottom="@+id/saveButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="getData" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/dataTextView"
+        android:layout_below="@+id/saveButton"
+        android:layout_toLeftOf="@+id/displayButton"
+        android:layout_toStartOf="@+id/displayButton"
+        android:layout_marginTop="61dp" />
+
+</RelativeLayout>
+

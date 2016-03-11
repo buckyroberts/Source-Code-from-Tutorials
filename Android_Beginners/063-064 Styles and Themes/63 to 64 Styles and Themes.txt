@@ -1,0 +1,150 @@
+[source code] Android Development Tutorial - 65 & 66 Shared Preferences
+
+/* Had to troubleshoot App Stopping
+ * Due to my theme not using the correct parent for an appComptActivity.
+ *
+ * These files were created with API 21 and may require setting changes to work with API23
+/*
+***** MainActivity.java
+package your.package.nbv63styles_themes;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+
+***** activity_main.xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/helloTextView"
+        />
+    <!-- remove per #64 Themes
+       style="@style/BabyBlue.BigBlue" />  -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView"
+        android:layout_below="@+id/helloTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="141dp"
+        />
+    <!--style="@style/BabyBlue" /> -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="63dp"
+        />
+        <!-- style="@style/BabyBlue" /> -->
+
+
+</RelativeLayout>
+
+
+***** manifest
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="your.package.nbv63styles_themes" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/theme64" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+
+***** Ocean.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BabyBlue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#efefef</item>
+        <item name="android:background">#006699</item>
+    </style>
+    <style name="BabyBlue.BigBlue">
+       <item name="android:textSize">30sp</item>
+    </style>
+</resources>
+***** greenTheme.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="themeBgColor">#009900</color>
+
+    <style name="theme64" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/themeBgColor</item>
+    </style>
+</resources>
+
+
+**** styles.xml (for reference)
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>

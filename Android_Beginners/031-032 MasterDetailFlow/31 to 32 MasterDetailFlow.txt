@@ -1,0 +1,257 @@
+[source code] Android Development Tutorials - 31 and 32 - Master Detail Flow
+
+Note we did not do anything special for side by side. When I run it on a tablet with a 4dp reduction in size it showed both.
+
+***** Manifest.xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="your.package.nbv31mdflow" >
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".WebpageListActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WebpageDetailActivity"
+            android:label="@string/title_webpage_detail"
+            android:parentActivityName=".WebpageListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".WebpageListActivity" />
+        </activity>
+    </application>
+
+</manifest>
+
+***** WebpageDetailFragment.java
+package your.package.nbv31mdflow;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+
+import your.package.nbv31mdflow.dummy.DummyContent;
+
+/**
+ * A fragment representing a single Webpage detail screen.
+ * This fragment is either contained in a {@link WebpageListActivity}
+ * in two-pane mode (on tablets) or a {@link WebpageDetailActivity}
+ * on handsets.
+ */
+public class WebpageDetailFragment extends Fragment {
+    /**
+     * The fragment argument representing the item ID that this fragment
+     * represents.
+     */
+    public static final String ARG_ITEM_ID = "item_id";
+
+    /**
+     * The dummy content this fragment is presenting.
+     */
+    private DummyContent.DummyItem mItem;
+
+    /**
+     * Mandatory empty constructor for the fragment manager to instantiate the
+     * fragment (e.g. upon screen orientation changes).
+     */
+    public WebpageDetailFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments().containsKey(ARG_ITEM_ID)) {
+            // Load the dummy content specified by the fragment
+            // arguments. In a real-world scenario, use a Loader
+            // to load content from a content provider.
+            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_webpage_detail, container, false);
+
+        // Show the dummy content as text in a TextView.
+        if (mItem != null) {
+            ((WebView) rootView.findViewById(R.id.detail_area)).loadUrl(mItem.url);
+        }
+
+        return rootView;
+    }
+}
+
+***** DummyContent.java
+
+package your.package.nbv31mdflow.dummy;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Helper class for providing sample content for user interfaces created by
+ * Android template wizards.
+ * <p/>
+ * TODO: Replace all uses of this class before publishing your app.
+ */
+public class DummyContent {
+
+    /**
+     * An array of sample (dummy) items.
+     */
+    public static List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+
+    /**
+     * A map of sample (dummy) items, by ID.
+     */
+    public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
+
+    static {
+        // Add 3 sample items.
+        addItem(new DummyItem("1", "Android Tutorails", "https://www.thenewboston.com/videos.php?cat=278"));
+        addItem(new DummyItem("2", "SQLite Tutorial", "http://www.vogella.com/tutorials/AndroidSQLite/article.html"));
+        addItem(new DummyItem("3", "Developer Tutorials", "http://developer.android.com/training/index.html"));
+    }
+
+    private static void addItem(DummyItem item) {
+        ITEMS.add(item);
+        ITEM_MAP.put(item.id, item);
+    }
+
+    /**
+     * A dummy item representing a piece of content.
+     */
+    public static class DummyItem {
+        public String id;
+        public String item_name;
+        public String url;
+
+        public DummyItem(String id, String item_name, String url) {
+            this.id = id;
+            this.item_name = item_name;
+            this.url = url;
+        }
+
+        @Override
+        public String toString() {
+            return item_name;
+        }
+    }
+}
+
+***** fragment_webpage_detail.xml
+<?xml version="1.0" encoding="utf-8"?>
+<WebView xmlns:android ="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detail_area"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+
+***** WebpageListActivity
+package your.package.nbv31mdflow;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+
+
+/**
+ * An activity representing a list of Webpages. This activity
+ * has different presentations for handset and tablet-size devices. On
+ * handsets, the activity presents a list of items, which when touched,
+ * lead to a {@link WebpageDetailActivity} representing
+ * item details. On tablets, the activity presents the list of items and
+ * item details side-by-side using two vertical panes.
+ * <p/>
+ * The activity makes heavy use of fragments. The list of items is a
+ * {@link WebpageListFragment} and the item details
+ * (if present) is a {@link WebpageDetailFragment}.
+ * <p/>
+ * This activity also implements the required
+ * {@link WebpageListFragment.Callbacks} interface
+ * to listen for item selections.
+ */
+public class WebpageListActivity extends FragmentActivity
+        implements WebpageListFragment.Callbacks {
+
+    /**
+     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
+     * device.
+     */
+    private boolean mTwoPane;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_webpage_list);
+
+        if (findViewById(R.id.webpage_detail_container) != null) {
+            // The detail container view will be present only in the
+            // large-screen layouts (res/values-large and
+            // res/values-sw600dp). If this view is present, then the
+            // activity should be in two-pane mode.
+            mTwoPane = true;
+
+            // In two-pane mode, list items should be given the
+            // 'activated' state when touched.
+            ((WebpageListFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.webpage_list))
+                    .setActivateOnItemClick(true);
+        }
+
+        // TODO: If exposing deep links into your app, handle intents here.
+    }
+
+    /**
+     * Callback method from {@link WebpageListFragment.Callbacks}
+     * indicating that the item with the given ID was selected.
+     */
+    @Override
+    public void onItemSelected(String id) {
+        if (mTwoPane) {
+            // In two-pane mode, show the detail view in this activity by
+            // adding or replacing the detail fragment using a
+            // fragment transaction.
+            Bundle arguments = new Bundle();
+            arguments.putString(WebpageDetailFragment.ARG_ITEM_ID, id);
+            WebpageDetailFragment fragment = new WebpageDetailFragment();
+            fragment.setArguments(arguments);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.webpage_detail_container, fragment)
+                    .commit();
+
+        } else {
+            // In single-pane mode, simply start the detail activity
+            // for the selected item ID.
+            Intent detailIntent = new Intent(this, WebpageDetailActivity.class);
+            detailIntent.putExtra(WebpageDetailFragment.ARG_ITEM_ID, id);
+            startActivity(detailIntent);
+        }
+    }
+}
+
+
+***** activity_webpage_list.xml
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/webpage_list"
+    android:name="your.package.nbv31mdflow.WebpageListFragment"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+    tools:context=".WebpageListActivity" tools:layout="@android:layout/list_content" />
