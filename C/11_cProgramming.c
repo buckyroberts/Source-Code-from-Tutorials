@@ -21,7 +21,7 @@ int main()
     printf("How many kids will you have? \n");
     scanf("%d", &numberOfBabies);
 
-    printf("%s and %s are in love and will have %d babies", firstName, crush, numberOfBabies);
+    printf("%s and %s are in love and will have %d babies\n", firstName, crush, numberOfBabies);
 
     return 0;
 }

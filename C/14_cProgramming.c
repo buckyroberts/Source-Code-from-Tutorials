@@ -15,7 +15,7 @@ int main()
     scanf("%f", &age3);
 
     average = (age1 + age2 + age3) / 3;
-    printf("\n The average age of the group is %f", average);
+    printf("\n The average age of the group is %f\n", average);
 
     return 0;
 }
