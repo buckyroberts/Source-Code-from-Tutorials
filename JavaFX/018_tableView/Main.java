@@ -37,7 +37,7 @@ public class Main extends Application {
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         //Quantity column
-        TableColumn<Product, String> quantityColumn = new TableColumn<>("Quantity");
+        TableColumn<Product, Integer> quantityColumn = new TableColumn<>("Quantity");
         quantityColumn.setMinWidth(100);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
