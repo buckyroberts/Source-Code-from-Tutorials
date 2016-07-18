@@ -43,7 +43,7 @@ public class Main extends Application {
 
         table = new TableView<>();
         table.setItems(getProduct());
-        table.getColumns().addAll(nameColumn, priceColumn, quantityColumn);
+        table.getColumns().addAll(Arrays.asList(nameColumn, priceColumn, quantityColumn));
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(table);
