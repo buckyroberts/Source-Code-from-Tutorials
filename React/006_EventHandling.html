@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>React Event Handling</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script> -->
+
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Hello Everyone !!!</h1>
+    <div id="content"></div>
+
+    <script type="text/jsx">
+        var Comment = React.createClass({
+            edit : function(){
+                    alert("Editing is being Done!");
+            },
+            remove : function(){
+                    alert("Remove is being done!");
+            },
+            render : function(){
+                return (
+                    <div>
+                        <div>Text of Whatever</div>
+                    <button onClick={this.edit}> Edit </button>
+                    <button onClick={this.remove}> Remove </button>
+                    </div>
+                );
+            }
+        });
+
+        React.render(
+            <div>
+                <Comment>Hey my name is Rahul Goel</Comment>
+                <Comment>Beans</Comment>
+                <Comment>Tuna</Comment>
+            </div>,document.getElementById('content')
+        );
+    </script>
+
+</body>
+</html>
