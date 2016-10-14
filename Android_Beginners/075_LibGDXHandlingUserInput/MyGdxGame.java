@@ -18,14 +18,14 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
     private BitmapFont font;
     private int screenWidth, screenHeight;
     private String message = "Touch me";
-    private GlyphLayout layout;
+    private GlyphLayout glyphLayout;
 
     //Set screen dimensions, font, and use this class for input processing
     @Override
     public void create () {
         batch = new SpriteBatch();
         
-        layout = new GlyphLayout();
+        glyphLayout = new GlyphLayout();
         screenWidth = Gdx.graphics.getWidth();
         screenHeight = Gdx.graphics.getHeight();
 
