@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
+/* Get Bound has been depricated in newer Version. Use glyphLayout Instead*/
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
     private SpriteBatch batch;
@@ -16,12 +18,14 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
     private BitmapFont font;
     private int screenWidth, screenHeight;
     private String message = "Touch me";
+    private GlyphLayout layout;
 
     //Set screen dimensions, font, and use this class for input processing
     @Override
     public void create () {
         batch = new SpriteBatch();
-
+        
+        layout = new GlyphLayout();
         screenWidth = Gdx.graphics.getWidth();
         screenHeight = Gdx.graphics.getHeight();
 
@@ -45,12 +49,13 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
         Gdx.gl.glClearColor(1,1,1,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        
+        glyphLayout.setText(font, message);
         BitmapFont.TextBounds textSize = font.getBounds(message);
-        float x = screenWidth/2 - textSize.width/2;
-        float y = screenHeight/2 + textSize.height/2;
+      
 
         batch.begin();
-        font.draw(batch, message, x, y);
+        font.draw(batch, glyphLayout, screenWidth/2 - glyphLayout.width/2, screenHeight/2 + glyphLayout.height/2);
         batch.end();
     }
 
