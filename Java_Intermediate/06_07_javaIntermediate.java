@@ -1,5 +1,3 @@
-/*06_javaIntermediate.java*/
-
 import java.util.*;
 
 public class Main {
@@ -26,8 +24,6 @@ public class Main {
         printMe(list1);
         reverseMe(list1);        
     }
-    
-/*07_javaIntermediate.java*/
     
     //printMe method
     private static void printMe(List<String> l) {
