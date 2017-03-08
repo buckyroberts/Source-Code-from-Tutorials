@@ -4,7 +4,7 @@ using namespace std;
 
 class StankFist{
 	public:
-		StankFist()(stinkyVar=0;)
+		StankFist(){stinkyVar=0;}
 	private:
 		int stinkyVar;
 		
