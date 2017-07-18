@@ -8,17 +8,6 @@ import android.util.Log;
 
 public class MainActivity extends ActionBarActivity {
 
-    private static final String TAG = "buckysMessage";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Log.i(TAG, "onCreate");
-    }
-
-    @Override
-    protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart");
     }
