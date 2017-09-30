@@ -14,3 +14,4 @@ cx_Freeze.setup(
 
 #python setup.py build
 #python setup.py bdist_msi
+#python setup.py build
