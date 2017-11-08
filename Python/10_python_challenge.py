@@ -1,5 +1,5 @@
 #Challenge
-#Find the numbers whıch can dive 4 and 4 multiple(tetragenous) in from 0 to 100
+#Find the numbers from 0 to 100(inclusive) which are a multiple of 4
 for n in range(101):
-    if(n % 4 is 0):
+    if(n % 4 == 0):
         print(n)
