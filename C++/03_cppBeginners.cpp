@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
 
-  cout << "text";
+  cout << "Text";
+  cout<<"\nWrite something which impresses the whole world\n";
   return 0;
 }
