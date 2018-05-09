@@ -11,7 +11,7 @@ int main()
 		{
 		throw 99;
 		}
-	}catch(int x);
+	}catch(int x){;
 		cout << "son can not be older than mom ERROR NUMBER :" << x << endl;
 	}
 
