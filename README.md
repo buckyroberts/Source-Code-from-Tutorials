@@ -1,4 +1,4 @@
-####Source Code from thenewboston Tutorials
+#### Source Code from thenewboston Tutorials
 
 We are in the process of adding the source code from all of the tutorials to a public GitHub repository. If anyone would like to contribute, please feel free!
 
@@ -10,7 +10,35 @@ DigitalOcean: https://docs.google.com/document/d/1xOllgXRN10fWz1TsURh0OYI60TAVz0
 
 ***
 
-#####How to Submit Source Code
+##### How to download a specific folder
+
+if you use git clone, you have to download complete repository, but svn (subversion) makes it easier to
+download specific folder from a repo.
+
+first install svn:
+
+ubuntu users:
+```
+$ sudo apt install subversion
+```
+
+then download the specific tutorial folder:
+
+```
+$ svn checkout https://github.com/buckyroberts/Source-Code-from-Tutorials/trunk/<folder name>
+```
+
+for example lets take Bootstrap.
+
+```
+$ svn checkout https://github.com/buckyroberts/Source-Code-from-Tutorials/trunk/Bootstrap
+```
+
+Thats it!
+
+***
+
+##### How to Submit Source Code
 
 1 - Download [GitHub for Windows](https://windows.github.com/) or [GitHub for Mac](https://mac.github.com/)
 
