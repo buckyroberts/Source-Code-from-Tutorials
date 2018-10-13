@@ -3,6 +3,7 @@
 public class food{
 	void eat(){
 				System.out.println(" this food is great");
+	}
 }
 
 //tuna.java file
@@ -10,6 +11,7 @@ public class food{
 public class tuna extends food{
 	void eat(){
 				System.out.println(" this tuna is great");
+	}
 }
 
 //potpie.java file
@@ -28,12 +30,14 @@ public class fatty{
 	}
 }
 //apples.java file
-public static void main(String[] args)
-{
-	fatty bucky = new fatty();
-	food fo = new food();
-	food po = new potpie();
+public class driver{
+	public static void main(String[] args)
+	{
+		fatty bucky = new fatty();
+		food fo = new food();
+		food po = new potpie();
 	
-	bucky.digest(fo);
-	bucky.digest(po);
+		bucky.digest(fo);
+		bucky.digest(po);
+	}
 }
