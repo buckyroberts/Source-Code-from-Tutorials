@@ -1,6 +1,6 @@
 // apples.java file
 
-class apples{
+class Apples{
 	public static void main(String[] args){
 
 		DogList DLO = new DogList();
