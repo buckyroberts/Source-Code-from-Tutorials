@@ -10,6 +10,10 @@ public class apples {
         for(tuna people: EnumSet.range(tuna.kelsey, tuna.candy))
         System.out.printf("%s\t%s\t%s\n", people, people.getDesc(), people.getYear());
     }
+    
+    public static void EatCunt() {
+        System.out.println("You have just ate the cunt of Bucky's sister"); 
+    }
 }
 
 public enum tuna {
@@ -27,6 +31,8 @@ public enum tuna {
         desc = description;
         year = birthday;
     }
+    
+    apples.EatCunt(); 
     
     public String getDesc(){
         return desc;
