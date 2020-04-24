@@ -1,0 +1,23 @@
+<div ng-controller ="onlineOrder">
+<center>
+    <table>
+        <tr>
+        <th>username</th>
+        <th>Email Id</th>
+        <th>Mobile Number</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </tr>
+        <tr ng-repeat="item in myData">
+          <td>{{item.username}}</td>
+          <td>{{item.emailid}}</td>
+          <td>{{item.mobile}}</td>
+          <td>{{item.password}}</td>
+          <td><button ng-click="edit()">Edit</button></td>
+          <td><button ng-click="delete()">Delete</button></td>
+        </tr>
+        
+    </table>
+    </center>
+</div>
