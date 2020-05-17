@@ -1,4 +1,4 @@
-####Source Code from thenewboston Tutorials
+## Source Code from thenewboston Tutorials
 
 We are in the process of adding the source code from all of the tutorials to a public GitHub repository. If anyone would like to contribute, please feel free!
 
@@ -10,19 +10,19 @@ DigitalOcean: https://docs.google.com/document/d/1xOllgXRN10fWz1TsURh0OYI60TAVz0
 
 ***
 
-#####How to Submit Source Code
+## How to Submit Source Code
 
 1 - Download [GitHub for Windows](https://windows.github.com/) or [GitHub for Mac](https://mac.github.com/)
 
-2 - On the top right of this page, click "Fork". This will create a copy for you.
+2 - On the top right of this page, click "Fork". This will create a copy of the repository for you.
 
 ![](http://i.imgur.com/UTwzOgC.png)
 
-3 - Once your copy has been created, click “Clone in Desktop” to download and save it on your computer. 
+3 - Once your copy has been created, click “Clone in Desktop” to download and save it to your computer. 
 
 ![](http://i.imgur.com/uNy5iHg.png)
 
-4 - From here you can make changes, add folders, add source code files, etc... 
+4 - From here you can make changes, add folders, add source code files, etc. 
 
 5 - When you are finished with your changes, open GitHub for Windows (or Mac)
 
@@ -40,4 +40,4 @@ DigitalOcean: https://docs.google.com/document/d/1xOllgXRN10fWz1TsURh0OYI60TAVz0
 
 9 - On this page, click the “Create pull request” button.
 
-10 - Add a comment and click “create pull request” again button to submit.
+10 - Add a comment and click “create pull request” button to submit.
