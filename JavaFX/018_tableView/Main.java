@@ -37,13 +37,13 @@ public class Main extends Application {
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         //Quantity column
-        TableColumn<Product, String> quantityColumn = new TableColumn<>("Quantity");
+        TableColumn<Product, Integer> quantityColumn = new TableColumn<>("Quantity");
         quantityColumn.setMinWidth(100);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
         table = new TableView<>();
         table.setItems(getProduct());
-        table.getColumns().addAll(nameColumn, priceColumn, quantityColumn);
+        table.getColumns().addAll(Arrays.asList(nameColumn, priceColumn, quantityColumn));
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(table);
