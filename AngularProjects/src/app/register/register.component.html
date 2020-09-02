@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="col-md-12 col-sm-12 reg-login">
+      <a routerLink="/home-page"> <i class="fa fa-sign-in" aria-hidden="true"></i> Home</a>
+  </div>
+  <div class="card card-container">
+      <form [formGroup]="myForm" class="form-signin">
+          <h3 class="login-header">  Registration</h3>
+          <input type="email" class="form-control" placeholder="Email address" formControlName="email" required>
+          <div *ngIf="myForm.controls['email'].touched && !myForm.controls['email'].valid">
+              <span class="warning" *ngIf="myForm.controls['email'].hasError('required') ">  
+         Email ID is required  
+           </span>
+              <span class="warning" *ngIf="myForm.controls['email'].hasError('email') ">  
+         Invalid Email ID  
+          </span>
+          </div>
+          <input type="text" class="form-control" placeholder="FirstName" formControlName="firstName"  (keydown)="restrictNumeric($event)" required>
+          <div *ngIf="myForm.controls['firstName'].touched && !myForm.controls['firstName'].valid">
+              <span class="warning" *ngIf="myForm.controls['firstName'].hasError('required') ">  
+         FirstName is required  
+           </span>
+           <span class="warning" *ngIf="myForm.controls['firstName'].hasError('pattern') ">  
+         Only  alphabets are allowed 
+           </span>
+              <span class="warning" *ngIf="myForm.controls['firstName'].hasError('minlength') ">  
+           Min length is 2 
+          </span>
+              <span class="warning" *ngIf="myForm.controls['firstName'].hasError('maxlength') ">  
+          max length is 50 
+      </span>
+          </div>
+          <input type="text" class="form-control" placeholder="LastName" formControlName="lastName"  (keydown)="restrictNumeric($event)" required>
+          <div *ngIf="myForm.controls['lastName'].touched && !myForm.controls['lastName'].valid">
+              <span class="warning" *ngIf="myForm.controls['lastName'].hasError('required') ">  
+         lastName is required  
+           </span>
+              <span class="warning" *ngIf="myForm.controls['lastName'].hasError('minlength') ">  
+           Min length is 2 
+          </span>
+              <span class="warning" *ngIf="myForm.controls['lastName'].hasError('maxlength') ">  
+          max length is 50 
+      </span>
+          </div>
+          <textarea type="text" rows="5" class="form-control" placeholder="Address" formControlName="address" required></textarea>
+          <div *ngIf="myForm.controls['address'].touched && !myForm.controls['address'].valid">
+              <span class="warning" *ngIf="myForm.controls['address'].hasError('required') ">  
+         Address is required  
+           </span>
+              <span class="warning" *ngIf="myForm.controls['address'].hasError('maxlength') ">  
+          max length is 255 
+      </span>
+          </div>
+          <input type="text" class="form-control" placeholder="Phone" formControlName="phone"  (keydown)="restrictAlpha($event)" required>
+          <div *ngIf="myForm.controls['phone'].touched && !myForm.controls['phone'].valid">
+              <span class="warning" *ngIf="myForm.controls['phone'].hasError('required') ">  
+         phone is required  
+           </span>
+              <span class="warning" *ngIf="myForm.controls['phone'].hasError('minLength') ">  
+          max length is 10
+      </span>
+              <span class="warning" *ngIf="myForm.controls['phone'].hasError('maxlength') ">  
+          max length is 11
+      </span>
+          </div>
+          <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
+          <div *ngIf="myForm.controls['password'].touched && !myForm.controls['password'].valid">
+              <span class="warning" *ngIf="!myForm.controls['password'].hasError('required')  && myForm.controls['password'].hasError('maxlength') ">  
+          max length is 20 
+      </span>
+              <span class="warning" *ngIf="myForm.controls['password'].hasError('required') ">  
+         password is required
+      </span>
+          </div>
+          <input type="password" class="form-control" placeholder="ConfirmPassword" id="confirmPassword" formControlName="confirmPassword"
+              required>
+     <div class="alert alert-danger" *ngIf="myForm.controls['confirmPassword'].touched && !myForm.controls['confirmPassword'].valid && myForm.controls.confirmPassword.errors?.MatchPassword">
+         Password not match</div>
+               <div *ngIf="myForm.controls['confirmPassword'].touched && !myForm.controls['confirmPassword'].valid && !myForm.controls.confirmPassword.errors?.MatchPassword">
+      <span class="warning" *ngIf="myForm.controls['confirmPassword'].hasError('required') ">  
+         Confirm Password is required
+      </span>
+               </div>
+  <button class="btn btn-lg btn-primary btn-block btn-signin login" type="submit" [disabled]="!myForm.valid" (click)="onSubmit()">Submit</button>
+  <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" (click)="reset()">Reset</button>
+  <span *ngIf="isFailed" class=" warning">  
+        Username/password is not valid</span>
+  </form>
+</div>
+</div>

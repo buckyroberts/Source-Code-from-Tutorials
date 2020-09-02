@@ -1,0 +1,29 @@
+<div ng-controller="security" class="signup-page">
+    <center>
+        
+        <i class="fa fa-male" aria-hidden="true"></i>
+        <input type="text" class="signup-text" ng-model="username" placeholder="Enter your Name"><br><br>
+        
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <input type="text" class="signup-text" ng-model="emailid" placeholder="Enter your Email"><br><br>
+        
+        <i class="fa fa-mobile" aria-hidden="true"></i>
+        <input type="text" class="signup-text" ng-model="mobilenumber" placeholder="Enter your Mobile Number"><br><br>
+        
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        <input type="password" class="signup-password" ng-model="password" placeholder="Enter your password"><br><br>
+        
+        <i class="fa fa-lock" aria-hidden="true"></i>
+         <input type="password" class="signup-password" ng-model="repassword" placeholder="Re-enter your password"><br><br>
+        
+            <form>
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female
+                <input type="radio" name="gender" value="other"> Other
+               </form>
+          <input type="button" class="signup-button" ng-click="enter()" value="Enter">
+    
+    </center>
+
+
+</div>

@@ -1,0 +1,30 @@
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(180, 117, 117);
+    box-sizing: border-box;
+  }
+  
+
+ 
+.imgcontainer {
+    text-align: center;
+    margin: 54px 0 12px 0;
+    position: relative;
+  }
+  
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  .container {
+    padding: 16px;
+  }
+  
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }

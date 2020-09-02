@@ -1,0 +1,36 @@
+
+.new-registration-head{
+    text-align: center;
+margin-bottom: 5%;
+margin-top: 2%;
+display: flex;
+}
+
+.lastname{
+    margin-top: 1%;
+}
+
+.login-detail-margin{
+ margin-right: 20%;
+     margin-top: 2%;
+margin-bottom: 5%;
+}
+.registerForm{
+width: 100%;
+margin-bottom: 3%;
+}
+.register-body{
+    padding-left: 15%;
+}
+.reg-login{
+    text-align: right;
+margin-top: 1%;
+}
+a{
+color: black;
+    font-size: 1.3em;
+font-weight: initial;;
+}
+.card-container.card {
+max-width: 500px;
+}

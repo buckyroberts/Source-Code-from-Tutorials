@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+   
+      <div class="imgcontainer">
+        <img src="avtaar.jpg" alt="Avatar" class="avatar">
+      </div>
+ 
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" formControlName="username" [ngClass]="{'is-invalid': submitted && f.username.errors}" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">>> required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors}" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">>> required</div>
+            <div *ngIf="f.email.errors.email">>> must be a valid email address</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid':submitted && f.password.errors}" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">>> required</div>
+            <div *ngIf="f.password.errors.minlength">>> must be at least 6 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          
+          <button class="btn btn-primary">Login</button>
+          <br>
+          <br>
+          
+    
+          <div class="col-md-12 col-sm-12 reg-login">
+              <a routerLink="/register"> <i class="fa fa-sign-in" aria-hidden="true"></i> Create an Account</a>
+          </div>
+
+        
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

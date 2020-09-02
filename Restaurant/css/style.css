@@ -1,0 +1,277 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+body{
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    margin: 50px;
+    background: 50% url(inovative.jpg);
+    background-size: 100%  ;
+    background-position:center;
+    margin: 0;
+    padding: 0;
+
+}
+h1{
+    text-align: center;
+    color: red;
+    font-weight:1000;
+    margin-top: 10px;
+    font-family: Calibri;
+
+}
+p{
+
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    font-weight:1000;
+    font-family: Calibri;
+
+}
+
+.logo{
+    border-radius: 5px;
+    background-color:white;
+    font-size: 16px;
+    border: 1px solid black;
+    width: 25%;
+    height: 30px;
+}
+.btn{
+   font-family: sans-serif;
+   background: red;
+   margin: 20px 12px 10px;
+   text-align: center;
+   display: block;
+   border: 1px;
+   padding: 5px 10px 5px;
+   color: white;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.btn:hover{
+    background-color: black;
+    cursor: pointer;
+}
+
+.main-page {
+    width: 110px;
+    position: absolute;
+    top: 10%;
+    left : 80%;
+    margin: 0 auto 100px;
+    padding: 20px;
+    text-align: center;
+    transform: translate(-50%,-50%);
+
+}
+.main-page input[type="button"]{
+    float: left;
+    border: none;
+    margin-left: 500%;
+    margin: 20px 12px 10px;
+    text-align: center;
+    padding: 4px 10px 2px;
+    outline:none;
+    transition: 0.25s;
+    font-family:Trebuchet MS;
+    font-size: 20px;
+    font-weight: 1000;
+    background-color: Transparent;
+    color: white;
+ }
+.main-page input[type="button"]:hover{
+    cursor: pointer;
+    background: black;
+}
+.login-page{
+    width:250px;
+    height: 300px;
+    position: absolute;
+    z-index: 1;
+    background-color:black;
+    top: 30%;
+    left : 80%;
+    margin: 0 auto 10px;
+    padding: 40px;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    color: white;
+
+}
+.login-page input[type="text"]{
+     border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 10px;
+    border-bottom: 1px solid white;
+}
+.login-page input[type="password"]{
+  border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 10px;
+    border-bottom: 1px solid white;
+}
+
+.login-page input[type="button"]{
+
+    border: none;
+    margin-left: 500%;
+    margin: 20px 12px 10px;
+    text-align: center;
+    padding: 4px 10px 2px;
+    outline:none;
+    transition: 0.25s;
+    font-family:sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: red;
+    color: black;
+    border-radius: 10px;
+
+}
+.login-page input[type="button"]:hover{
+     cursor: pointer;
+    background: white;
+}
+
+.login-page a{
+     text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    color: #00FFFF;
+
+}
+.login-page a:hover{
+      cursor: pointer;
+    color: white;
+}
+
+.signup-page {
+   width:250px;
+    height: 300px;
+    position: absolute;
+    z-index:1px;
+    background-color:black;
+    top: 30%;
+    left : 80%;
+    margin: 0 auto 10px;
+    padding: 40px;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    color: white;
+}
+
+.signup-text {
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 10px;
+    border-bottom: 1px solid white;
+}
+.signup-password {
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 10px;
+    border-bottom: 1px solid white;
+
+}
+.signup-button {
+    border: none;
+    background-color: Transparent;
+    margin: 20px 12px 10px;
+    text-align: center;
+    padding: 4px 10px 2px;
+    outline:none;
+    transition: 0.25s;
+    font-family:sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: red;
+    color: black;
+    border-radius: 10px;
+
+}
+.signup-button:hover{
+     cursor: pointer;
+    background: white;
+}
+table,tr,th,td {
+    margin-top: 20px;
+    background: white;
+        border: 1px solid black;
+        padding:10px 10px 10px;
+}
+.homepage{
+    background: white;
+}
+  ul{
+     list-style: none;
+    }
+    li{
+      width: 200px;
+        height: 30px;
+        background-color: rgb(240, 47, 47);
+        text-align:center;
+        margin-right:5px;
+        line-height: 30px;
+        float: left;
+        border: none;
+    }
+    li:hover{
+        background-color: coral;
+        cursor: pointer;
+    }
+     a {
+    text-decoration: none;        
+    }
+    ul li ul li{
+        display: none;
+    }
+    ul li:hover ul li {
+        display: block;
+        background-color: bisque;
+        
+    }
+    ul li a:hover{
+        background-color: azure;
+    }
+
+    
+        body
+        {   background-image: image("inovative.jpg");
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        table
+        {   inline-size: auto;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+        table th
+        {
+            background-color: #F7F7F7;
+            color: #333;
+            font-weight: bold;
+        }
+        table th, table td
+        {   
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: rebeccapurple;
+        }
