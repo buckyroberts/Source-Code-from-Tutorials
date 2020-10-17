@@ -7,7 +7,8 @@ int main() {
 	int currentYear;
 	int birthYear;
 	
-	currentYear = 2014;
+	printf("Enter Current Year");
+        scanf("%d",&currentYear);
 	birthYear = 1987;
 	age = (currentYear - birthYear);
 	
