@@ -11,6 +11,12 @@ int main(){
 
     double c;
     cout << "size of double: "  << sizeof(c) << endl;
+    
+    long long int d;
+    cout << "size of long long int: " << sizeof(d) << endl;
+    
+    float e;
+    cout << "size of float: " << sizeof(e) << endl;
 
     double bucky[10];
     cout << "size of bucky[]: " << sizeof(bucky) << endl;
