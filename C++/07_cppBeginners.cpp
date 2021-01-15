@@ -22,11 +22,19 @@ int main()
 
 
     int calculation3 = (4 + 3) * 7; // calculation2 = 49
-
+    
+    
+    int calculation4 = 2 + 6 * 3; // It gives us 2 + ( 6 * 3)= 20
+    
+    
+    int calculation5 = (2 + 6) * 3;// calculaton5 = 24
+    
+    
     cout << "calculation1: " << calculation1 << endl;
     cout << "calculation2: " << calculation2 << endl;
     cout << "calculation3: " << calculation3 << endl;
-
-
+    cout << "calculation4: " << calculation4 << endl;
+    cout << "calculation5: " << calculation5 << endl;
+    
     return 0;
 }
