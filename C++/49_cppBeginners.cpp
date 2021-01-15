@@ -10,8 +10,9 @@ class Hannah{
 		private:
 			int h;	
 };
+#endif // HANNAH_H
 //This is Hannah.cpp file
-#include <iostream.h>
+#include <iostream>
 #include "Hannah.h"
 using namespace std;
 
