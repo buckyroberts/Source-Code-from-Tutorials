@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>React Event Handling</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Hello Everyone !!!</h1>
+    <div id="content"></div>
+
+    <script type="text/jsx">
+        
+        var CheckBox = React.createClass({
+            getInitialState : function(){
+                return {checked : true}
+            },
+            handleChecked : function(){
+                this.setState({checked : !this.state.checked})
+            },
+            render : function(){
+                var msg;
+                if(this.state.checked){
+                    msg = 'Checked'
+                }
+                else{
+                    msg = 'Unchecked'
+                }
+                return (
+                    <div>
+                        <input type="checkbox" onChange={this.handleChecked} defaultChecked ={this.state.checked} />
+                        <h3>CheckBox is {msg}</h3>
+                    </div>
+                );
+            }
+        });
+
+
+        React.render(
+            <div>
+                <CheckBox/>
+            </div>,document.getElementById('content')
+        );
+    </script>
+</body>
+</html>
