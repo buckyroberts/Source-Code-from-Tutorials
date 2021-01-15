@@ -6,7 +6,7 @@ class apples{
         int total = 0;
         int grade;
         int average;
-        int counter;
+        int counter = 0;
 
         while (counter < 10){
             grade = input.nextInt();
