@@ -1,0 +1,220 @@
+[source code] Android Development Tutorial - 41 to 42 - Intent Service
+
+**** MainActivity.java
+package your.package.nbv41services;
+// I didn't reuse the Apples Bacon app like Bucky
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
+public class MainActivity extends AppCompatActivity {
+    TextView tvToggleState;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
+        tvToggleState = (TextView) findViewById(R.id.tvToggleState);
+
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The toggle is enabled
+                    tvToggleState.setText("ON");
+                } else {
+                    // The toggle is disabled
+                    tvToggleState.setText("OFF");
+                }
+            }
+        });
+        // Lesson 41
+        Intent intent = new Intent(this,TheIntentService.class);
+        startService(intent);
+        // Lesson 42
+        Intent lesson42Service = new Intent(this,Lesson42Service.class);
+        startService(lesson42Service);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+***** TheIntentService.java
+package info.glwhiitney.nbv41services;
+// Tutorial 41
+import android.annotation.SuppressLint;
+import android.app.IntentService;
+import android.content.Intent;
+import android.util.Log;
+
+public class TheIntentService extends IntentService {
+    public static final String TAG = "info.glwhiitney.nbv41services";
+
+    public TheIntentService() { // I think you normally pass in the name of the intent service, but he deleted it.
+        super("TheIntentService");
+    }
+
+    @SuppressLint("LongLogTag")
+    @Override
+    protected void onHandleIntent(Intent intent) {
+    // this is what the service does.
+        Log.i(TAG,"#41 Intent now started.");
+    }
+
+
+}
+
+***** Lesson42Service.java
+package info.glwhiitney.nbv41services;
+
+import android.annotation.SuppressLint;
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.util.Log;
+
+public class Lesson42Service extends Service {
+    public static final String TAG = "info.glwhiitney.nbv41services";
+
+    public Lesson42Service() {
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // default - return super.onStartCommand(intent, flags, startId);
+        Log.i(TAG,"L42 onStartCommand called");
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                // What do you want the thread to do
+                for (int i = 0; i < 5; i++) {
+                    long futureTime = (System.currentTimeMillis() + 5000);// 5 sec
+
+                    while (System.currentTimeMillis() < futureTime) {
+                        // Don't need to sync when you are not using a thread e,g, Tutorial 39
+                        synchronized (this) {
+                            try {
+                                wait(futureTime - System.currentTimeMillis());
+                                Log.i(TAG, "L42 loop "+ i + " finished");
+                            } catch (Exception e) {
+
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        // start the thread
+        Thread less42Thread = new Thread(r);
+        less42Thread.start();
+        return Service.START_STICKY; // restarts the service if it gets destroyed.
+    }
+
+    @SuppressLint("LongLogTag")
+    @Override
+    public void onDestroy() {
+        //Removed default super
+        Log.i(TAG,"L42 onDestroy called");
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // This is not a bound service
+       // throw new UnsupportedOperationException("Not yet implemented");
+        return null;
+    }
+}
+
+***** Android Manifest
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="info.glwhiitney.nbv41services" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".TheIntentService" />
+        <service
+            android:name=".Lesson42Service"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+    </application>
+
+</manifest>
+
+*****activity_main.xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tvToggleState"
+        android:id="@+id/tvToggleState"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/tglOffText"
+        android:textOn="@string/tglOnText"
+        android:id="@+id/toggleButton"
+        android:layout_marginTop="71dp"
+        android:layout_below="@+id/tvToggleState"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+
+***** Strings.xml
+<resources>
+    <string name="app_name">NBV41Services</string>
+    <string name="action_settings">Settings</string>
+    <string name="tglOnText">ON</string>
+    <string name="tglOffText">OFF</string>
+    <string name="tvToggleState">Toggle Me While Services Run</string>
+</resources>

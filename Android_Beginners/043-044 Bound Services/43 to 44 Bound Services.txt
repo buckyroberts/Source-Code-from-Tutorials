@@ -1,0 +1,141 @@
+[source code] Android Development Tutorial -  43 and 44 - Bound Services
+
+***** MainActivity.java
+package your.package.nbv43boundservice;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+//Lesson43 imports
+import android.view.View;
+import android.widget.TextView;
+import android.os.IBinder;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import your.package.nbv43boundservice.Lesson43TimeService.MyLocalBinder;
+
+
+public class MainActivity extends AppCompatActivity {
+    Lesson43TimeService theService;
+    boolean isBound = false;
+    //Lesson 44
+    public void btnShowTime(View view){
+        String currentTime = theService.getCurrentTime();
+        TextView tvShowTime = (TextView) findViewById(R.id.tvShowTime);
+        tvShowTime.setText(currentTime);
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Intent i = new Intent(this, Lesson43TimeService.class);
+        bindService(i, theConnection, Context.BIND_AUTO_CREATE);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // AS comment - Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //  AS comment - Handle action bar item clicks here. The action bar will
+        //  AS comment - automatically handle clicks on the Home/Up button, so long
+        //  AS comment - as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        // AS comment - noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    private ServiceConnection theConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            // get a ref to the binder class and call the bind method
+            MyLocalBinder binder = (MyLocalBinder) service;
+            theService = binder.getService();
+            isBound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            isBound = false;
+        }
+    };
+
+
+}
+
+
+***** activity_main.xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/tvShowTime"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Time"
+        android:id="@+id/btnShowTime"
+        android:onClick="btnShowTime"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+
+***** Lesson43TimeService.java
+
+package your.package.nbv43boundservice;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.os.Binder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class Lesson43TimeService extends Service {
+    private final IBinder lesson43Binder = new MyLocalBinder();
+    public Lesson43TimeService() {
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // Buckky deleted
+       // throw new UnsupportedOperationException("Not yet implemented");
+        return lesson43Binder;
+    }
+    public String getCurrentTime(){
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss", Locale.US);
+        return (df.format(new Date()));
+    }
+
+    public class MyLocalBinder extends Binder {
+        Lesson43TimeService getService(){
+            return Lesson43TimeService.this;
+        }
+    }
+
+}
